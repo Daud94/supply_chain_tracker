@@ -80,7 +80,7 @@
   "sourceMap": "156:1520:4:-;;;572:56;8:9:-1;5:2;;;30:1;27;20:12;5:2;572:56:4;599:24;612:10;599:12;;;:24;;;:::i;:::-;156:1520;;1335:114;1389:22;1403:7;1389:9;:13;;;;;;:22;;;;;:::i;:::-;1436:7;1422:22;;;;;;;;;;;;1335:114;:::o;245:167:5:-;336:1;317:21;;:7;:21;;;;309:30;;;;;;;;354:18;358:4;364:7;354:3;;;:18;;;:::i;:::-;353:19;345:28;;;;;;;;403:4;380;:11;;:20;392:7;380:20;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;245:167;;:::o;726:166::-;810:4;851:1;832:21;;:7;:21;;;;824:30;;;;;;;;867:4;:11;;:20;879:7;867:20;;;;;;;;;;;;;;;;;;;;;;;;;860:27;;726:166;;;;:::o;156:1520:4:-;;;;;;;",
   "deployedSourceMap": "156:1520:4:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;845:104;;8:9:-1;5:2;;;30:1;27;20:12;5:2;845:104:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1010:90;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1010:90:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;1168:73;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1168:73:4;;;;;;845:104;903:4;922:22;936:7;922:9;:13;;:22;;;;:::i;:::-;915:29;;845:104;;;:::o;1010:90::-;751:22;762:10;751;:22::i;:::-;743:31;;;;;;;;1074:21;1087:7;1074:12;:21::i;:::-;1010:90;:::o;1168:73::-;1209:27;1225:10;1209:15;:27::i;:::-;1168:73::o;726:166:5:-;810:4;851:1;832:21;;:7;:21;;;;824:30;;;;;;;;867:4;:11;;:20;879:7;867:20;;;;;;;;;;;;;;;;;;;;;;;;;860:27;;726:166;;;;:::o;1335:114:4:-;1389:22;1403:7;1389:9;:13;;:22;;;;:::i;:::-;1436:7;1422:22;;;;;;;;;;;;1335:114;:::o;1552:122::-;1609:25;1626:7;1609:9;:16;;:25;;;;:::i;:::-;1661:7;1645:24;;;;;;;;;;;;1552:122;:::o;245:167:5:-;336:1;317:21;;:7;:21;;;;309:30;;;;;;;;354:18;358:4;364:7;354:3;:18::i;:::-;353:19;345:28;;;;;;;;403:4;380;:11;;:20;392:7;380:20;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;245:167;;:::o;478:170::-;572:1;553:21;;:7;:21;;;;545:30;;;;;;;;589:18;593:4;599:7;589:3;:18::i;:::-;581:27;;;;;;;;638:5;615:4;:11;;:20;627:7;615:20;;;;;;;;;;;;;;;;:28;;;;;;;;;;;;;;;;;;478:170;;:::o",
   "source": "pragma solidity ^0.4.24;\n\n// Import the library 'Roles'\nimport \"./Roles.sol\";\n\n// Define a contract 'RetailerRole' to manage this role - add, remove, check\ncontract RetailerRole {\n  using Roles for Roles.Role;\n  // Define 2 events, one for Adding, and other for Removing\n  event RetailerAdded(address indexed account);\n  event RetailerRemoved(address indexed account);\n  \n  // Define a struct 'retailers' by inheriting from 'Roles' library, struct Role\n  Roles.Role private retailers;\n  // In the constructor make the address that deploys this contract the 1st retailer\n  constructor() public {\n    _addRetailer(msg.sender);\n  }\n\n  // Define a modifier that checks to see if msg.sender has the appropriate role\n  modifier onlyRetailer() {\n    require(isRetailer(msg.sender));\n    _;\n  }\n\n  // Define a function 'isRetailer' to check this role\n  function isRetailer(address account) public view returns (bool) {\n    return retailers.has(account);\n  }\n\n  // Define a function 'addRetailer' that adds this role\n  function addRetailer(address account) public onlyRetailer {\n    _addRetailer(account);\n  }\n\n  // Define a function 'renounceRetailer' to renounce this role\n  function renounceRetailer() public {\n    _removeRetailer(msg.sender);\n  }\n\n  // Define an internal function '_addRetailer' to add this role, called by 'addRetailer'\n  function _addRetailer(address account) internal {\n    retailers.add(account);\n    emit RetailerAdded(account);\n  }\n\n  // Define an internal function '_removeRetailer' to remove this role, called by 'removeRetailer'\n  function _removeRetailer(address account) internal {\n    retailers.remove(account);\n    emit RetailerRemoved(account);\n  }\n}",
-  "sourcePath": "C:\\Users\\Olarewaju\\blockchain_development\\nd1309-Project-6b-Example-Template-master\\project-6\\contracts\\coffeeaccesscontrol\\RetailerRole.sol",
+  "sourcePath": "C:\\Users\\Olarewaju\\crypto projects\\supply_chain_tracker\\project-6\\contracts\\coffeeaccesscontrol\\RetailerRole.sol",
   "ast": {
     "absolutePath": "project:/contracts/coffeeaccesscontrol/RetailerRole.sol",
     "exportedSymbols": {
@@ -2693,10 +2693,34 @@
       "links": {},
       "address": "0x79051A2faFcC216A55d3897474012145d158F170",
       "transactionHash": "0x2eb6fa3035dd1eeff39226ff0dc1b1ed1188f3039cf196572f243a6b7da5a237"
+    },
+    "1670934728489": {
+      "events": {},
+      "links": {},
+      "address": "0x79051A2faFcC216A55d3897474012145d158F170",
+      "transactionHash": "0x2eb6fa3035dd1eeff39226ff0dc1b1ed1188f3039cf196572f243a6b7da5a237"
+    },
+    "1670935762276": {
+      "events": {},
+      "links": {},
+      "address": "0x79051A2faFcC216A55d3897474012145d158F170",
+      "transactionHash": "0x2eb6fa3035dd1eeff39226ff0dc1b1ed1188f3039cf196572f243a6b7da5a237"
+    },
+    "1670939561974": {
+      "events": {},
+      "links": {},
+      "address": "0x79051A2faFcC216A55d3897474012145d158F170",
+      "transactionHash": "0x2eb6fa3035dd1eeff39226ff0dc1b1ed1188f3039cf196572f243a6b7da5a237"
+    },
+    "1670941286394": {
+      "events": {},
+      "links": {},
+      "address": "0x79051A2faFcC216A55d3897474012145d158F170",
+      "transactionHash": "0x2eb6fa3035dd1eeff39226ff0dc1b1ed1188f3039cf196572f243a6b7da5a237"
     }
   },
   "schemaVersion": "3.4.11",
-  "updatedAt": "2022-12-12T20:54:01.543Z",
+  "updatedAt": "2022-12-13T14:21:44.038Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

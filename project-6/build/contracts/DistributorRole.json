@@ -80,7 +80,7 @@
   "sourceMap": "159:1639:2:-;;;591:59;8:9:-1;5:2;;;30:1;27;20:12;5:2;591:59:2;618:27;634:10;618:15;;;:27;;;:::i;:::-;159:1639;;1433:123;1490:25;1507:7;1490:12;:16;;;;;;:25;;;;;:::i;:::-;1543:7;1526:25;;;;;;;;;;;;1433:123;:::o;245:167:5:-;336:1;317:21;;:7;:21;;;;309:30;;;;;;;;354:18;358:4;364:7;354:3;;;:18;;;:::i;:::-;353:19;345:28;;;;;;;;403:4;380;:11;;:20;392:7;380:20;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;245:167;;:::o;726:166::-;810:4;851:1;832:21;;:7;:21;;;;824:30;;;;;;;;867:4;:11;;:20;879:7;867:20;;;;;;;;;;;;;;;;;;;;;;;;;860:27;;726:166;;;;:::o;159:1639:2:-;;;;;;;",
   "deployedSourceMap": "159:1639:2:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1254:79;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1254:79:2;;;;;;1084:99;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1084:99:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;910:110;;8:9:-1;5:2;;;30:1;27;20:12;5:2;910:110:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1254:79;1298:30;1317:10;1298:18;:30::i;:::-;1254:79::o;1084:99::-;776:25;790:10;776:13;:25::i;:::-;768:68;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1154:24;1170:7;1154:15;:24::i;:::-;1084:99;:::o;910:110::-;971:4;990:25;1007:7;990:12;:16;;:25;;;;:::i;:::-;983:32;;910:110;;;:::o;1665:131::-;1725:28;1745:7;1725:12;:19;;:28;;;;:::i;:::-;1783:7;1764:27;;;;;;;;;;;;1665:131;:::o;1433:123::-;1490:25;1507:7;1490:12;:16;;:25;;;;:::i;:::-;1543:7;1526:25;;;;;;;;;;;;1433:123;:::o;726:166:5:-;810:4;851:1;832:21;;:7;:21;;;;824:30;;;;;;;;867:4;:11;;:20;879:7;867:20;;;;;;;;;;;;;;;;;;;;;;;;;860:27;;726:166;;;;:::o;478:170::-;572:1;553:21;;:7;:21;;;;545:30;;;;;;;;589:18;593:4;599:7;589:3;:18::i;:::-;581:27;;;;;;;;638:5;615:4;:11;;:20;627:7;615:20;;;;;;;;;;;;;;;;:28;;;;;;;;;;;;;;;;;;478:170;;:::o;245:167::-;336:1;317:21;;:7;:21;;;;309:30;;;;;;;;354:18;358:4;364:7;354:3;:18::i;:::-;353:19;345:28;;;;;;;;403:4;380;:11;;:20;392:7;380:20;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;245:167;;:::o",
   "source": "pragma solidity ^0.4.24;\n\n// Import the library 'Roles'\nimport \"./Roles.sol\";\n\n// Define a contract 'DistributorRole' to manage this role - add, remove, check\ncontract DistributorRole {\n  using Roles for Roles.Role;\n  // Define 2 events, one for Adding, and other for Removing\n  event DistributorAdded(address indexed account);\n  event DistributorRemoved(address indexed account);\n\n  // Define a struct 'distributors' by inheriting from 'Roles' library, struct Role\n  Roles.Role private distributors;\n  // In the constructor make the address that deploys this contract the 1st distributor\n  constructor() public {\n    _addDistributor(msg.sender);\n  }\n\n  // Define a modifier that checks to see if msg.sender has the appropriate role\n  modifier onlyDistributor() {\n    require(isDistributor(msg.sender),\"The caller is not a distributor\");\n    _;\n  }\n\n  // Define a function 'isDistributor' to check this role\n  function isDistributor(address account) public view returns (bool) {\n    return distributors.has(account);\n  }\n\n  // Define a function 'addDistributor' that adds this role\n  function addDistributor(address account) public onlyDistributor {\n    _addDistributor(account);\n  }\n\n  // Define a function 'renounceDistributor' to renounce this role\n  function renounceDistributor() public {\n    _removeDistributor(msg.sender);\n  }\n\n  // Define an internal function '_addDistributor' to add this role, called by 'addDistributor'\n  function _addDistributor(address account) internal {\n    distributors.add(account);\n    emit DistributorAdded(account);\n  }\n\n  // Define an internal function '_removeDistributor' to remove this role, called by 'removeDistributor'\n  function _removeDistributor(address account) internal {\n    distributors.remove(account);\n    emit DistributorRemoved(account);\n  }\n}",
-  "sourcePath": "C:\\Users\\Olarewaju\\blockchain_development\\nd1309-Project-6b-Example-Template-master\\project-6\\contracts\\coffeeaccesscontrol\\DistributorRole.sol",
+  "sourcePath": "C:\\Users\\Olarewaju\\crypto projects\\supply_chain_tracker\\project-6\\contracts\\coffeeaccesscontrol\\DistributorRole.sol",
   "ast": {
     "absolutePath": "project:/contracts/coffeeaccesscontrol/DistributorRole.sol",
     "exportedSymbols": {
@@ -2736,10 +2736,34 @@
       "links": {},
       "address": "0xd22De155853B67cE1cA3693FBE52EE958f755E7b",
       "transactionHash": "0x5826dbc3fcff3f6605c64a6d3efa94ce7e2c5b4f21aec6a79b4d3e79376804a5"
+    },
+    "1670934728489": {
+      "events": {},
+      "links": {},
+      "address": "0xd22De155853B67cE1cA3693FBE52EE958f755E7b",
+      "transactionHash": "0x5826dbc3fcff3f6605c64a6d3efa94ce7e2c5b4f21aec6a79b4d3e79376804a5"
+    },
+    "1670935762276": {
+      "events": {},
+      "links": {},
+      "address": "0xd22De155853B67cE1cA3693FBE52EE958f755E7b",
+      "transactionHash": "0x5826dbc3fcff3f6605c64a6d3efa94ce7e2c5b4f21aec6a79b4d3e79376804a5"
+    },
+    "1670939561974": {
+      "events": {},
+      "links": {},
+      "address": "0xd22De155853B67cE1cA3693FBE52EE958f755E7b",
+      "transactionHash": "0x5826dbc3fcff3f6605c64a6d3efa94ce7e2c5b4f21aec6a79b4d3e79376804a5"
+    },
+    "1670941286394": {
+      "events": {},
+      "links": {},
+      "address": "0xd22De155853B67cE1cA3693FBE52EE958f755E7b",
+      "transactionHash": "0x5826dbc3fcff3f6605c64a6d3efa94ce7e2c5b4f21aec6a79b4d3e79376804a5"
     }
   },
   "schemaVersion": "3.4.11",
-  "updatedAt": "2022-12-12T20:54:01.541Z",
+  "updatedAt": "2022-12-13T14:21:44.035Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
